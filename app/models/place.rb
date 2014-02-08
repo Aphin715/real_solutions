@@ -3,4 +3,7 @@ class Place < ActiveRecord::Base
 
   belongs_to :region,
     inverse_of: :places
+
+  has_many :surveys,
+    inverse_of: :place
 end

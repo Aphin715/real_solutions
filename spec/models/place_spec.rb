@@ -7,4 +7,6 @@ describe Place do
   it { should_not have_valid(:name).when(*blanks) }
 
   it { should belong_to(:region) }
+
+  it { should have_many(:surveys) }
 end

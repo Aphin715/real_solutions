@@ -7,4 +7,8 @@ describe Question do
   it { should_not have_valid(:title).when(*blanks) }
 
   it { should belong_to(:survey) }
+
+  it { should have_many(:answers) }
+
+  it { should have_many(:comments) }
 end
