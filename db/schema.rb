@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140208205221) do
+ActiveRecord::Schema.define(version: 20140208214922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: true do |t|
+    t.string   "response",    null: false
+    t.integer  "question_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comments", force: true do |t|
+    t.text     "note",        null: false
+    t.integer  "question_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "countries", force: true do |t|
     t.string   "name",       null: false
@@ -31,9 +45,42 @@ ActiveRecord::Schema.define(version: 20140208205221) do
     t.datetime "updated_at"
   end
 
+  create_table "practitioners", force: true do |t|
+    t.string   "first_name",   null: false
+    t.string   "last_name",    null: false
+    t.string   "phone_number"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "questions", force: true do |t|
+    t.string   "title",      null: false
+    t.integer  "survey_id",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "regions", force: true do |t|
     t.string   "name",       null: false
     t.integer  "country_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "responders", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "surveys", force: true do |t|
+    t.string   "title",           null: false
+    t.integer  "place_id",        null: false
+    t.integer  "responder_id",    null: false
+    t.integer  "practitioner_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
