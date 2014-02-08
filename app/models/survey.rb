@@ -9,4 +9,7 @@ class Survey < ActiveRecord::Base
 
   belongs_to :practitioner,
     inverse_of: :surveys
+
+  has_many :questions,
+    inverse_of: :survey
 end
