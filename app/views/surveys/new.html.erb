@@ -1,11 +1,17 @@
 <div class="container">
 
-  <ul>
+  <ul class="survey-questions">
   <% form_for @survey do |form| %>
     <li>question 1
-    <%= question 1
+    <%= form.label(:question, "i choose answer A") %>
+    <%= radio_button("question", "answer", "A") %>
+    <%= label_tag(:question, "i choose answer B") %>
+    <%= radio_button_tag(:question, "B") %>
     </li>
-
+    <%= form.submit "submit survey" %>
+    <% end %>
   </ul>
 
 </div>
+
+
